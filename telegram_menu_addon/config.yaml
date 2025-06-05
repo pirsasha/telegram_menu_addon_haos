@@ -1,7 +1,7 @@
 
 name: "Telegram Menu Builder"
 description: "Генератор Telegram-меню с кнопками для управления устройствами Home Assistant"
-version: "1.0.0"
+version: "1.0.1"
 slug: "telegram_menu_builder"
 startup: services
 boot: auto
@@ -14,4 +14,4 @@ homeassistant_api: true
 options: {}
 schema: {}
 ports:
-  8123/tcp: 8123
+  8123/tcp: 9123
