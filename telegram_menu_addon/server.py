@@ -1,9 +1,8 @@
-
 from flask import Flask, request, jsonify, send_file
 import yaml
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="web", static_url_path="")
 
 MENU_CONFIG_PATH = "/share/telegram_menu_config.yaml"
 AUTOMATIONS_OUTPUT_PATH = "/share/generated_telegram_automations.yaml"
@@ -55,12 +54,9 @@ def download_yaml():
 def ping():
     return {"status": "ok"}
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8123)
-
-
-from flask import send_from_directory
-
 @app.route("/")
 def serve_ui():
-    return send_from_directory("/app/web", "index.html")
+    return app.send_static_file("index.html")
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8123)
